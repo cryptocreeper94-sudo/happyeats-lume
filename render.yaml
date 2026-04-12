@@ -1,0 +1,22 @@
+# Render Blueprint — HappyEats Lume
+# Production deployment of the Lume-native platform
+services:
+  - type: web
+    name: happyeats-lume
+    runtime: node
+    region: ohio
+    plan: starter
+    branch: main
+    repo: https://github.com/cryptocreeper94-sudo/happyeats-lume
+    buildCommand: bash scripts/render-build.sh
+    startCommand: bash scripts/render-start.sh
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: APP_URL
+        value: https://happyeats.app

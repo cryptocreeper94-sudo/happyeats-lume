@@ -1,42 +1,40 @@
 {
   "name": "happyeats-lume",
   "version": "1.0.0",
-  "description": "HappyEats rebuilt natively in Lume — the deterministic natural-language programming language. Features AI-native menu digitization, health cert validation, and order management using Lume's ask/think keywords, self-sustaining runtime blocks (monitor/heal/optimize), and compile-time Lume-V trust certificates. A DarkWave Studios LLC production.",
   "type": "module",
+  "description": "HappyEats rebuilt natively in Lume — the first production application of the deterministic natural-language programming language.",
   "scripts": {
     "compile": "node scripts/compile.js",
-    "compile:watch": "node scripts/compile.js --watch",
-    "dev": "npm run compile && node dist/app.js",
-    "start": "node dist/app.js",
-    "build": "npm run compile"
-  },
-  "keywords": [
-    "happyeats",
-    "lume",
-    "deterministic-ai",
-    "food-delivery",
-    "trust-certificates",
-    "self-sustaining",
-    "natural-language-programming"
-  ],
-  "author": "DarkWave Studios LLC",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^5.1.0",
-    "drizzle-orm": "^0.43.1",
-    "@neondatabase/serverless": "^1.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0"
-  },
-  "devDependencies": {
-    "esbuild": "^0.28.0"
+    "dev": "npm run compile && node server/index.js",
+    "build": "npm run compile && npm run build:client",
+    "build:client": "cd client && npm run build",
+    "start": "node server/index.js",
+    "render:build": "bash scripts/render-build.sh",
+    "render:start": "bash scripts/render-start.sh"
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cryptocreeper94-sudo/happyeats-lume"
+  "dependencies": {
+    "express": "^5.0.1",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.1",
+    "drizzle-orm": "^0.38.3",
+    "drizzle-zod": "^0.7.0",
+    "zod": "^3.24.2",
+    "dotenv": "^16.4.7",
+    "bcryptjs": "^2.4.3",
+    "openai": "^4.77.3",
+    "resend": "^4.1.2",
+    "stripe": "^17.5.0",
+    "twilio": "^5.4.4",
+    "ws": "^8.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "express-rate-limit": "^7.5.0",
+    "uuid": "^11.0.5"
   },
-  "homepage": "https://happyeats.app"
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4"
+  }
 }
