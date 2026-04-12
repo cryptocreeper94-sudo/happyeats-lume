@@ -159,6 +159,6 @@ npm run dev
 
 ---
 
-**By [DarkWave Studios LLC](https://darkwavestudios.io) — Protected by [TrustShield.tech](https://trustshield.tech)**
+**By [DarkWave Studios LLC](https://darkwavestudios.io)**
 
-*Patent Pending — TrustShield.tech*
+*Lume and Lume-V Deterministic AI Governance — Patent Pending*
