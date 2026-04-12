@@ -1,0 +1,30 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Delivery Zone Routes
+// ═══════════════════════════════════════════════════════════
+
+type DeliveryZone:
+    name: text
+    radius_miles: number
+    base_fee: number
+    is_active: boolean
+
+to create_zone(name: text, radius: number):
+    log("Zone created: {name} ({radius} mi radius)")
+    return true
+
+to calculate_delivery_fee(zone_name: text, distance: number):
+    define base_fee = 4.99
+    let fee = base_fee
+    if distance > 3:
+        set fee to base_fee + distance * 1.50
+    log("Delivery fee for {zone_name}: {fee}")
+    return fee
+
+to check_zone_coverage(address: text):
+    let result = ask "Is this address likely within Nashville metro area for food delivery? Address: {address}. Reply: covered or not_covered."
+    log("Zone check for {address}: {result}")
+    return result
+
+export to create_zone_routes():
+    log("Zone routes initialized")
+    return true

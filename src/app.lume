@@ -1,0 +1,31 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Main Application Entry Point
+// ═══════════════════════════════════════════════════════════
+
+use { create_vendor_routes } from "./routes/vendors.js"
+use { create_order_routes } from "./routes/orders.js"
+use { create_zone_routes } from "./routes/zones.js"
+use { create_health_routes } from "./routes/health.js"
+
+define PORT = 4000
+define APP_NAME = "HappyEats Lume"
+
+monitor:
+    log("Self-Sustaining Monitor: ACTIVE")
+
+heal:
+    log("Self-Healing Layer: ACTIVE")
+
+optimize:
+    log("Self-Optimizing Layer: ACTIVE")
+
+to start_server():
+    log("Starting {APP_NAME} on port {PORT}...")
+    log("Powered by Lume v1.1.0")
+    log("Lume-V Governance: ACTIVE")
+    return true
+
+let started = start_server()
+
+if started:
+    log("{APP_NAME} is LIVE on port {PORT}")

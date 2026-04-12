@@ -1,0 +1,24 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Menu Item Data Model
+//
+//  Defines MenuItem and MenuCategory types.
+//
+//  By DarkWave Studios LLC
+// ═══════════════════════════════════════════════════════════
+
+export type MenuItem:
+    name: text
+    description: text
+    price: number
+    category: text
+    vendor_id: number
+    image_url: text = ""
+    is_available: boolean = true
+    calories: number = 0
+    allergens: text = ""
+    spice_level: number = 0
+
+export type MenuCategory:
+    name: text
+    display_order: number = 0
+    icon: text = ""

@@ -1,0 +1,30 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Vendor Data Model
+//
+//  Defines the Vendor type used across the system.
+//  Lume's type keyword compiles to a JavaScript class
+//  with constructor destructuring.
+//
+//  By DarkWave Studios LLC
+// ═══════════════════════════════════════════════════════════
+
+export type Vendor:
+    name: text
+    cuisine: text
+    phone: text
+    email: text
+    address: text
+    zone_id: number
+    approval_status: text = "pending"
+    health_cert_url: text = ""
+    rating: number = 0
+    is_active: boolean = true
+
+export type VendorApplication:
+    vendor_name: text
+    owner_name: text
+    cuisine_type: text
+    phone: text
+    email: text
+    health_cert_image: text
+    zone_requested: text

@@ -1,0 +1,34 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — AI Menu Scanner
+// ═══════════════════════════════════════════════════════════
+
+use { MenuItem } from "../models/menu.js"
+
+@healable
+to scan_menu(image_url: text, vendor_id: number):
+    log("Scanning menu image for vendor {vendor_id}...")
+    let raw_items = ask "Analyze this menu image and extract all menu items with name, description, price, category. Format as JSON array. Image: {image_url}"
+    let validation = think "Verify these extracted menu items are reasonable food items with valid prices between 1 and 200 dollars. Items: {raw_items}. Reply with: valid or invalid."
+    when validation is:
+        "valid" -> log("Menu scan validated")
+        "invalid" -> log("Menu scan flagged for review")
+        default -> log("Menu scan uncertain — defaulting to review")
+    log("Menu scan complete for vendor {vendor_id}")
+    return raw_items
+
+to extract_item_details(item_text: text):
+    let details = ask "Parse this menu item text into structured data with name, price, description: {item_text}"
+    return details
+
+to validate_menu_prices(items: list):
+    let valid_count = 0
+    let flagged_count = 0
+    for each item in items:
+        if item.price > 0:
+            if item.price < 200:
+                valid_count += 1
+            else:
+                flagged_count += 1
+                log("Price flagged: {item.name}")
+    log("Price validation: {valid_count} valid, {flagged_count} flagged")
+    return valid_count

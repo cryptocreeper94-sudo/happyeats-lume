@@ -1,0 +1,42 @@
+{
+  "name": "happyeats-lume",
+  "version": "1.0.0",
+  "description": "HappyEats rebuilt natively in Lume — the deterministic natural-language programming language. Features AI-native menu digitization, health cert validation, and order management using Lume's ask/think keywords, self-sustaining runtime blocks (monitor/heal/optimize), and compile-time Lume-V trust certificates. A DarkWave Studios LLC production.",
+  "type": "module",
+  "scripts": {
+    "compile": "node scripts/compile.js",
+    "compile:watch": "node scripts/compile.js --watch",
+    "dev": "npm run compile && node dist/app.js",
+    "start": "node dist/app.js",
+    "build": "npm run compile"
+  },
+  "keywords": [
+    "happyeats",
+    "lume",
+    "deterministic-ai",
+    "food-delivery",
+    "trust-certificates",
+    "self-sustaining",
+    "natural-language-programming"
+  ],
+  "author": "DarkWave Studios LLC",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "drizzle-orm": "^0.43.1",
+    "@neondatabase/serverless": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cryptocreeper94-sudo/happyeats-lume"
+  },
+  "homepage": "https://happyeats.app"
+}

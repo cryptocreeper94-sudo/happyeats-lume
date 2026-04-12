@@ -1,0 +1,20 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — AI Health Certificate Validator
+// ═══════════════════════════════════════════════════════════
+
+@healable
+to validate_health_cert(cert_image_url: text, vendor_name: text):
+    log("Validating health certificate for {vendor_name}...")
+    let cert_text = ask "Read this health inspection certificate image and extract all text including inspection date, score, violations, inspector name, and expiration date. Image: {cert_image_url}"
+    let analysis = think "Analyze this health inspection certificate for {vendor_name}. Cert data: {cert_text}. Is the certificate valid and current? Is the score passing above 85? Are there critical violations? Reply with: approved, conditional, or rejected."
+    when analysis is:
+        "approved" -> log("Health cert APPROVED for {vendor_name}")
+        "conditional" -> log("Health cert CONDITIONAL for {vendor_name}")
+        "rejected" -> log("Health cert REJECTED for {vendor_name}")
+        default -> log("Health cert UNCERTAIN for {vendor_name}")
+    log("Health cert validation complete for {vendor_name}")
+    return analysis
+
+to check_cert_expiration(expiry_date: text):
+    let check = ask "Is this date in the past? Date: {expiry_date}. Reply: expired or valid."
+    return check

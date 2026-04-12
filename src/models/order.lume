@@ -1,0 +1,33 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Order Data Model
+//
+//  Defines Order, OrderItem, and OrderStatus types.
+//
+//  By DarkWave Studios LLC
+// ═══════════════════════════════════════════════════════════
+
+export type OrderItem:
+    menu_item_id: number
+    name: text
+    price: number
+    quantity: number = 1
+
+export type Order:
+    customer_name: text
+    customer_phone: text
+    customer_address: text
+    vendor_id: number
+    items: list
+    subtotal: number = 0
+    tax: number = 0
+    delivery_fee: number = 0
+    total: number = 0
+    status: text = "pending"
+    payment_method: text = "card"
+    notes: text = ""
+
+export type OrderStatus:
+    order_id: number
+    status: text
+    updated_by: text
+    timestamp: text

@@ -1,0 +1,30 @@
+{
+  "compiler": "@lume/compiler",
+  "compilerPath": "d:/lume",
+  "version": "1.1.0",
+  "sourceDir": "src",
+  "outputDir": "dist",
+  "target": "node",
+  "features": {
+    "selfSustaining": true,
+    "trustCertificates": true,
+    "aiKeywords": true,
+    "englishMode": false
+  },
+  "ai": {
+    "defaultModel": "openai.gpt4",
+    "fallbackModels": ["anthropic.claude_sonnet", "google.gemini_flash"],
+    "confidenceThreshold": 0.6
+  },
+  "lumeV": {
+    "enabled": true,
+    "mode": "inline",
+    "confidenceThreshold": 0.6,
+    "ambiguityThreshold": 0.15
+  },
+  "trust": {
+    "emitCertificates": true,
+    "signCompileOutput": true,
+    "certDir": ".lume-certs"
+  }
+}

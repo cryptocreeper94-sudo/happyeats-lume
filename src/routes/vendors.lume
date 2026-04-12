@@ -1,0 +1,37 @@
+// ═══════════════════════════════════════════════════════════
+//  HAPPYEATS-LUME — Vendor Routes
+// ═══════════════════════════════════════════════════════════
+
+use { Vendor, VendorApplication } from "../models/vendor.js"
+
+@healable
+to register_vendor(name: text, cuisine: text, phone: text, email: text):
+    let vendor = Vendor({ name: name, cuisine: cuisine, phone: phone, email: email })
+    let validation = ask "Review this food vendor application. Name: {name}, Cuisine: {cuisine}. Is this a legitimate food business? Respond with approved or needs_review."
+    when validation is:
+        "approved" -> log("Vendor approved: {name}")
+        "needs_review" -> log("Vendor needs review: {name}")
+        default -> log("Vendor pending: {name}")
+    log("Vendor registered: {name} ({cuisine})")
+    return vendor
+
+to get_vendor(vendor_id: number):
+    log("Fetching vendor {vendor_id}")
+    return vendor_id
+
+to list_vendors():
+    log("Listing all active vendors")
+    return true
+
+to update_vendor_status(vendor_id: number, status: text):
+    log("Updating vendor {vendor_id} to status: {status}")
+    return true
+
+to search_vendors(cuisine: text):
+    let result = ask "Normalize this cuisine type to a standard category: {cuisine}. Return just the category name."
+    log("Search normalized: {cuisine}")
+    return result
+
+export to create_vendor_routes():
+    log("Vendor routes initialized")
+    return true
