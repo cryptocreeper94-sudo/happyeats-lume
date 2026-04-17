@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════
+﻿// ═══════════════════════════════════════════════════════════
 //  HAPPYEATS-LUME — Server Entry Point
 //
 //  Full production Express 5 server with:
@@ -239,7 +239,7 @@ async function startServer() {
 
     // Minimal fallback server for health checks
     const port = parseInt(process.env.PORT || "5000", 10);
-    app.get("/*", (_req, res) => {
+    app.get("/{*path}", (_req, res) => {
       res.status(503).send("Service starting up...");
     });
     httpServer.listen({ port, host: "0.0.0.0" }, () => {

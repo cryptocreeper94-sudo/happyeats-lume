@@ -1,4 +1,4 @@
-/**
+﻿/**
  * HappyEats Lume — Static File Server
  * Serves public/ assets and branded catch-all for any route
  * not handled by the API.
@@ -86,7 +86,7 @@ export function serveStatic(app) {
   }
 
   // SPA / catch-all: serve index.html if it exists, else branded landing
-  app.get("*", (_req, res) => {
+  app.get("/{*path}", (_req, res) => {
     const indexPath = path.join(publicDir, "index.html");
     if (fs.existsSync(indexPath)) {
       res.sendFile(indexPath);
