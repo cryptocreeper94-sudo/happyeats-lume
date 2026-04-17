@@ -38,6 +38,7 @@ process.on("unhandledRejection", (reason) => {
 
 const allowedOrigins = [
   process.env.APP_DOMAIN ? `https://${process.env.APP_DOMAIN}` : undefined,
+  "https://happyeats.tlid.io",
   "https://tldriverconnect.com",
   "https://www.tldriverconnect.com",
   "https://happyeats.app",
@@ -75,7 +76,7 @@ const VENDOR_SUBDOMAINS = {
   shellskitchen: "shells-kitchen",
   "shells-kitchen": "shells-kitchen",
 };
-const MAIN_DOMAINS = ["happyeats.app", "happy-eats.app", "tldriverconnect.com"];
+const MAIN_DOMAINS = ["happyeats.tlid.io", "happyeats.app", "happy-eats.app", "tldriverconnect.com"];
 
 app.use((req, _res, next) => {
   const host = (req.hostname || req.headers.host || "").split(":")[0].toLowerCase();

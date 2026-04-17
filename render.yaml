@@ -1,5 +1,6 @@
 # Render Blueprint — HappyEats Lume
-# Production deployment of the Lume-native platform
+# First production Lume-native application — deployed at happyeats.tlid.io
+# Database: shares TLDriverConnect PostgreSQL instance (DATABASE_URL in Render dashboard)
 services:
   - type: web
     name: happyeats-lume
@@ -19,4 +20,11 @@ services:
       - key: PORT
         value: 5000
       - key: APP_URL
-        value: https://happyeats.app
+        value: https://happyeats.tlid.io
+      - key: APP_DOMAIN
+        value: happyeats.tlid.io
+      # DATABASE_URL — set in Render dashboard (shared TLDriverConnect PostgreSQL)
+      # HE_JWT_SECRET  — set in Render dashboard
+      # OPENAI_API_KEY — set in Render dashboard
+      # STRIPE_SECRET_KEY — set in Render dashboard
+      # RESEND_API_KEY — set in Render dashboard
