@@ -169,12 +169,10 @@ app.use((req, res, next) => {
 async function startServer() {
   // ── JWT Secret Check (production) ──
   if (process.env.NODE_ENV === "production" && !process.env.HE_JWT_SECRET && !process.env.JWT_SECRET) {
-    console.error(`
-      [FATAL SECURITY ERROR]
-      No HE_JWT_SECRET or JWT_SECRET found in production environment variables.
-      Exiting to prevent security misconfigurations.
+    console.warn(`
+      [SECURITY WARNING] HE_JWT_SECRET / JWT_SECRET not set.
+      Auth endpoints will be disabled until the secret is configured in Render.
     `);
-    process.exit(1);
   }
 
   try {
