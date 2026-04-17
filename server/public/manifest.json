@@ -1,0 +1,31 @@
+{
+  "name": "HappyEats",
+  "short_name": "HappyEats",
+  "description": "Local food truck ordering platform powered by Lume. Order fresh from Nashville I-24 Corridor food trucks with AI-verified menus and blockchain-secure transactions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#040a06",
+  "theme_color": "#10b981",
+  "orientation": "any",
+  "lang": "en",
+  "categories": ["food", "lifestyle", "shopping"],
+  "icons": [
+    { "src": "/icons/icon-72.png",   "sizes": "72x72",   "type": "image/png" },
+    { "src": "/icons/icon-96.png",   "sizes": "96x96",   "type": "image/png" },
+    { "src": "/icons/icon-128.png",  "sizes": "128x128", "type": "image/png" },
+    { "src": "/icons/icon-144.png",  "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152.png",  "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-192.png",  "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-384.png",  "sizes": "384x384", "type": "image/png" },
+    { "src": "/icons/icon-512.png",  "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "/icons/screenshot-desktop.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide",   "label": "HappyEats Menu" },
+    { "src": "/icons/screenshot-mobile.png",  "sizes": "390x844",  "type": "image/png", "form_factor": "narrow", "label": "HappyEats Order" }
+  ],
+  "shortcuts": [
+    { "name": "Order Now",    "url": "/order",   "description": "Place a food truck order" },
+    { "name": "My Orders",   "url": "/orders",  "description": "View your order history" }
+  ]
+}
