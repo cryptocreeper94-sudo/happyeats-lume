@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /checkout
+Disallow: /account
+Disallow: /owner
+Disallow: /developer
+Disallow: /ws/
+
+Sitemap: https://happyeats.app/sitemap.xml

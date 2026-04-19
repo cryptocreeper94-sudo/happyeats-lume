@@ -1,0 +1,210 @@
+Objective:  
+Perform a complete, end‑to‑end audit of all applications, services, integrations, and supporting materials. Deliver a fully functional, error‑free, mobile‑first, ultra‑premium product ecosystem with all systems connected, updated, and operational.
+
+1. APPLICATION FUNCTIONALITY SWEEP
+Perform a full walkthrough of every screen, feature, and user flow.
+
+Check for:
+No broken flows
+
+No missing buttons or dead ends
+
+No orphan pages
+
+No deprecated routes
+
+No placeholder text
+
+No missing images or icons
+
+All modals, drawers, and popups functioning
+
+All forms submit correctly
+
+All validation rules working
+
+All success/error states present and styled
+
+2. API & BACKEND INTEGRITY
+Audit all API connections and backend services.
+
+Verify:
+No 404, 500, 301, 302, or timeout errors
+
+All endpoints return correct data
+
+All authentication flows working
+
+All tokens refreshing correctly
+
+All webhooks firing and logging
+
+All cron jobs running on schedule
+
+All environment variables present and correct
+
+No deprecated API calls
+
+No console errors in browser or device logs
+
+3. AI AGENT CONNECTIVITY
+Ensure all AI agents are fully operational.
+
+Confirm:
+All agents connected to correct endpoints
+
+All agents returning responses without delay
+
+All agents using correct system prompts
+
+All agents have access to required tools
+
+No missing API keys
+
+No hallucination‑prone or outdated logic
+
+All agent‑to‑agent handoffs functioning
+
+4. UI/UX PREMIUM UPGRADE
+Apply a consistent, ultra‑premium visual standard.
+
+Requirements:
+Mobile‑first layout
+
+Glassmorphism elements where appropriate
+
+3D buttons with depth and shadow logic
+
+Smooth micro‑interactions
+
+All cards and boxes include photorealistic images relevant to subject matter
+
+Consistent spacing, padding, and grid alignment
+
+Typography hierarchy clean and modern
+
+Dark mode compatibility (if applicable)
+
+5. CONTENT & DOCUMENTATION UPDATE
+Update all business and strategic documents.
+
+Deliverables:
+Updated Business Plan
+
+Updated Roadmap
+
+Updated Whitepaper
+
+Updated Executive Summary
+
+Updated Pitch Deck (if applicable)
+
+Updated Tokenomics (if applicable)
+
+Updated FAQ and support documentation
+
+All documents must reflect current features, branding, and timelines.
+
+6. DEVELOPER / OWNER PORTAL
+Audit and update the internal portal.
+
+Ensure:
+All admin tools functional
+
+All analytics dashboards working
+
+All logs readable and exportable
+
+All user management tools operational
+
+All permissions correct
+
+All internal documentation updated
+
+7. PAYMENT SYSTEMS
+Verify all payment systems are fully functional.
+
+Stripe
+All product IDs added
+
+All prices correct
+
+All webhooks firing
+
+Test mode and live mode verified
+
+Subscriptions working
+
+One‑time payments working
+
+Coinbase Commerce
+All wallets connected
+
+All payment buttons functional
+
+All confirmations logging
+
+All callbacks working
+
+8. PERFORMANCE & SECURITY
+Run a full performance and security sweep.
+
+Check:
+Page load speed
+
+Image optimization
+
+Caching layers
+
+SSL active
+
+No mixed‑content errors
+
+No exposed keys
+
+No console warnings
+
+No unused libraries
+
+No outdated dependencies
+
+9. CROSS‑DEVICE & CROSS‑BROWSER TESTING
+Test on:
+
+Devices
+iPhone (latest + older)
+
+Android (Samsung + Pixel)
+
+Tablets
+
+Desktop
+
+Browsers
+Chrome
+
+Safari
+
+Firefox
+
+Edge
+
+Everything must behave identically.
+
+10. FINAL DELIVERABLES
+Provide a final report containing:
+
+Full list of issues found
+
+Fixes applied
+
+Remaining items (if any)
+
+Screenshots or screen recordings
+
+Updated documentation
+
+Confirmation that all systems are operational
+
+11. ANYTHING MISSED
+If you discover any additional issues, inconsistencies, or missing components not listed above, document and resolve them. Use best judgment to ensure the ecosystem is complete, polished, and production‑ready.

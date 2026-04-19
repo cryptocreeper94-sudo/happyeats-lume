@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
+
+    <title>Happy Eats - Delivery for Drivers</title>
+    <meta name="description" content="Order food, parts, and services delivered right to your truck. 24/7 delivery service for drivers." />
+    
+    <meta property="og:title" content="Happy Eats - Delivery for Drivers" />
+    <meta property="og:description" content="Order food, parts, and services delivered right to your truck. 24/7 delivery service for drivers." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://replit.com/public/images/opengraph.png" />
+    <link rel="canonical" href="https://happyeats.app/" id="canonical-url" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@replit" />
+    <meta name="twitter:title" content="Happy Eats - Delivery for Drivers" />
+    <meta name="twitter:description" content="Order food, parts, and services delivered right to your truck. 24/7 delivery service for drivers." />
+    <meta name="twitter:image" content="https://replit.com/public/images/opengraph.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" id="favicon" />
+    <link rel="manifest" href="/manifest.json" id="manifest" />
+    <meta name="theme-color" content="#FF7849" id="theme-color" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Happy Eats" id="apple-title" />
+    <link rel="apple-touch-icon" href="/happyeats-icon.png" id="apple-icon" />
+    <link rel="apple-touch-startup-image" href="/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" id="splash-pro-max" />
+    <link rel="apple-touch-startup-image" href="/splash-1290x2796.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" id="splash-13-pro-max" />
+    <link rel="apple-touch-startup-image" href="/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" id="splash-14" />
+    <link rel="apple-touch-startup-image" href="/splash-1170x2532.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" id="splash-15" />
+    <link rel="apple-touch-startup-image" href="/splash-1170x2532.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" id="splash-x" />
+    <link rel="apple-touch-startup-image" href="/splash-1170x2532.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" id="splash-xsmax" />
+    <link rel="apple-touch-startup-image" href="/splash-1170x2532.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" id="splash-xr" />
+    <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" id="splash-8plus" />
+    <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" id="splash-8" />
+    <link rel="apple-touch-startup-image" href="/splash-screen.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" id="splash-se" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="google-adsense-account" content="ca-pub-7386731030203849">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7386731030203849" crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Happy Eats",
+      "description": "Order food, parts, and services delivered right to your truck. 24/7 delivery service for drivers.",
+      "url": "https://happyeats.app",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DarkWave Studios, LLC",
+        "url": "https://dwtl.io"
+      }
+    }
+    </script>
+
+    <script>
+      (function() {
+        var host = window.location.hostname;
+        var isTL = host.includes('tldriverconnect') || host.includes('trustlayer');
+        
+        if (isTL) {
+          document.title = 'TL Driver Connect';
+          document.getElementById('manifest').href = '/tl-manifest.json';
+          document.getElementById('theme-color').content = '#06b6d4';
+          document.getElementById('apple-title').content = 'TL Connect';
+          document.getElementById('apple-icon').href = '/tl-icon-512.png';
+          document.getElementById('favicon').href = '/tl-icon-512.png';
+          
+          var splashLinks = document.querySelectorAll('link[rel="apple-touch-startup-image"]');
+          splashLinks.forEach(function(link) {
+            if (link.href.includes('1290x2796')) link.href = '/tl-splash-1290x2796.png';
+            else if (link.href.includes('1170x2532')) link.href = '/tl-splash-1170x2532.png';
+            else link.href = '/tl-splash-screen.png';
+          });
+          
+          var ogTitle = document.querySelector('meta[property="og:title"]');
+          var ogDesc = document.querySelector('meta[property="og:description"]');
+          var twTitle = document.querySelector('meta[name="twitter:title"]');
+          var twDesc = document.querySelector('meta[name="twitter:description"]');
+          var desc = document.querySelector('meta[name="description"]');
+          
+          if (ogTitle) ogTitle.content = 'TL Driver Connect — Nationwide Driver Services';
+          if (ogDesc) ogDesc.content = 'Driver tools, fleet coordination & franchise platform powered by Trust Layer';
+          if (twTitle) twTitle.content = 'TL Driver Connect — Nationwide Driver Services';
+          if (twDesc) twDesc.content = 'Driver tools, fleet coordination & franchise platform powered by Trust Layer';
+          if (desc) desc.content = 'Driver tools, fleet coordination & franchise platform powered by Trust Layer';
+          var canonical = document.getElementById('canonical-url');
+          if (canonical) canonical.href = 'https://tldriverconnect.com/';
+        }
+      })();
+    </script>
+    <style>
+      #pwa-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background: #0f172a;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+        overflow: hidden;
+      }
+      #pwa-splash.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+      #pwa-splash .splash-bg {
+        position: absolute;
+        inset: 0;
+        background-size: contain;
+        background-position: center top;
+        background-repeat: no-repeat;
+        animation: splash-zoom 3s ease-out forwards;
+      }
+      @media (min-width: 768px) {
+        #pwa-splash .splash-bg {
+          background-size: contain;
+          background-position: center center;
+        }
+      }
+      #pwa-splash .splash-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 60%, rgba(15,23,42,0.85) 85%, rgba(15,23,42,0.95) 100%);
+      }
+      #pwa-splash .splash-bottom {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 0 32px 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #pwa-splash .splash-loader-track {
+        width: 180px;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+      #pwa-splash .splash-loader-bar {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #FF7849, #f43f5e, #FF7849);
+        background-size: 200% 100%;
+        animation: splash-progress 2.5s ease-in-out forwards, splash-shimmer 1.2s ease-in-out infinite;
+      }
+      #pwa-splash .splash-loading-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        color: rgba(255,255,255,0.45);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: splash-text-pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes splash-zoom {
+        0% { transform: scale(1.1); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes splash-progress {
+        0% { width: 0%; }
+        30% { width: 45%; }
+        60% { width: 70%; }
+        100% { width: 100%; }
+      }
+      @keyframes splash-shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      @keyframes splash-text-pulse {
+        0%, 100% { opacity: 0.45; }
+        50% { opacity: 0.8; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pwa-splash">
+      <div class="splash-bg" id="splash-bg" style="background-image: url('/splash-1170x2532.png')"></div>
+      <div class="splash-overlay"></div>
+      <div class="splash-bottom">
+        <div class="splash-loader-track">
+          <div class="splash-loader-bar"></div>
+        </div>
+        <div class="splash-loading-text">Loading</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      (function() {
+        var host = window.location.hostname;
+        if (host.includes('tldriverconnect') || host.includes('trustlayer')) {
+          var bg = document.getElementById('splash-bg');
+          if (bg) bg.style.backgroundImage = "url('/tl-splash-1170x2532.png')";
+          var bar = document.querySelector('.splash-loader-bar');
+          if (bar) bar.style.background = 'linear-gradient(90deg, #06b6d4, #a78bfa, #06b6d4)';
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+    <script src="https://dwtl.io/api/ecosystem/shared/loader.js"
+      data-api="https://dwtl.io"
+      data-components="announcement-bar"
+      data-theme="dark"
+      defer></script>
+      
+    <!-- Global Signal Chat Widget -->
+    <script src="https://signal-chat.tlid.io/widget.js" 
+      data-hub="happyeats" 
+      data-position="bottom-right" 
+      async defer></script>
+      
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+  </body>
+</html>

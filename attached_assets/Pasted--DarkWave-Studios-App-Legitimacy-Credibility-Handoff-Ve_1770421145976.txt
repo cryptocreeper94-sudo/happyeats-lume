@@ -1,0 +1,145 @@
+# DarkWave Studios — App Legitimacy & Credibility Handoff
+
+**Version:** 1.0  
+**Generated:** February 2026  
+**From:** GarageBot (garagebot.replit.app)  
+**Purpose:** Reference blueprint for all DarkWave Studios ecosystem apps to achieve Google recognition, affiliate network approval, ad network compliance, and general trust/credibility signals.
+
+---
+
+## Quick Reference: What GarageBot Has Implemented
+
+| Requirement | Route / File | Status |
+|---|---|---|
+| Terms of Service | `/terms` | Live |
+| Privacy Policy | `/privacy` | Live |
+| Affiliate Disclosure (FTC) | `/affiliate-disclosure` | Live |
+| About Us | `/about` | Live |
+| Contact Us (with working form) | `/contact` | Live |
+| Support / FAQ | `/support` | Live |
+| sitemap.xml (dynamic) | `/sitemap.xml` | Live |
+| robots.txt | `/robots.txt` (static) | Live |
+| Structured Data (JSON-LD) | `index.html` `<script>` tag | Live |
+| Open Graph Meta Tags | `index.html` `<head>` | Live |
+| Twitter Card Meta Tags | `index.html` `<head>` | Live |
+| Canonical URL | `index.html` `<link rel="canonical">` | Live |
+| SSL / HTTPS | Replit-managed | Live |
+| PWA Manifest | `/manifest.json` | Live |
+| Google AdSense Integration | `index.html` script tag | Live |
+| Favicon + Apple Touch Icons | `index.html` link tags | Live |
+| Service Worker | `/sw.js` | Live |
+| Footer w/ Legal Links | All pages via `Footer.tsx` | Live |
+
+---
+
+## 1. REQUIRED PAGES (Must-Have for Every App)
+
+### 1A. Terms of Service (`/terms`)
+- Company legal name: DarkWave Studios, LLC
+- Acceptance of terms, services description, user responsibilities
+- Payment terms, IP rights, limitation of liability
+- Governing law (Tennessee), contact info, "Last Updated" date
+
+### 1B. Privacy Policy (`/privacy`)
+- Data collection, usage, sharing, security
+- Cookie policy, advertising practices (AdSense), affiliate link disclosure
+- User rights (access, deletion, opt-out), COPPA compliance
+- Must mention Google AdSense cookies and opt-out link
+
+### 1C. About Us (`/about`)
+- Company name, mission, story, team info
+- Key features, business model transparency, ecosystem links
+
+### 1D. Contact Us (`/contact`)
+- Working contact form (name, email, subject, message)
+- Professional email (support@[app].io), business hours
+- Affiliate reviewers sometimes test the form — it must work
+
+### 1E. Support / FAQ (`/support`)
+- Searchable FAQ, categorized questions, contact form
+- Links to other help resources
+
+### 1F. Affiliate Disclosure (`/affiliate-disclosure`)
+- FTC compliance language, affiliate network list
+- "No extra cost to you" statement, editorial independence
+- Must be linked from footer and any page with affiliate links
+
+---
+
+## 2. SEO & TECHNICAL REQUIREMENTS
+
+### 2A. sitemap.xml — Dynamic, server-generated
+- Include all public pages, exclude API/auth/checkout/dashboard routes
+- Homepage priority 1.0, submit to Google Search Console
+
+### 2B. robots.txt — Static file
+- Allow: /
+- Disallow: /api/, /auth/, /checkout, /account, /dashboard, /ws/
+- Include Sitemap URL
+
+### 2C. HTML Meta Tags
+- Primary SEO (title, description, keywords, author, robots)
+- Open Graph (og:type, og:url, og:title, og:description, og:image)
+- Twitter Card (card, site, creator, title, description, image)
+- Canonical URL, PWA meta tags
+
+### 2D. Structured Data (JSON-LD)
+- Schema.org WebApplication type
+- Publisher: DarkWave Studios, LLC
+
+---
+
+## 3. FOOTER — Must appear on every page
+Row 1: About | Contact | Support | Terms | Privacy | Affiliates | [app-specific links]
+Row 2: © 2026 DarkWave Studios, LLC | Version | Ecosystem links
+
+---
+
+## 4. AD NETWORK (Google AdSense)
+- Publisher ID in index.html meta tag + script
+- Privacy Policy must mention AdSense, cookies, opt-out
+- Never place ads on login/signup/checkout flows
+- Ad-free subscription option ($5/month via Stripe)
+
+---
+
+## 5. AFFILIATE APPROVAL CHECKLIST
+- Live site with real content, SSL, all legal pages
+- Working contact form, professional design, no broken links
+- Mobile responsive, fast load times, sitemap submitted
+
+---
+
+## 6. ECOSYSTEM CROSS-LINKS
+| App | Domain |
+|---|---|
+| GarageBot | garagebot.replit.app / garagebot.io |
+| Trust Layer ID | tlid.io |
+| TrustShield | trustshield.tech |
+| ORBIT Staffing | orbitstaffing.replit.app |
+| DarkWave Studios | dwsc.io |
+
+---
+
+## 7. TEMPLATES INCLUDED
+- Terms of Service template (copy-paste ready)
+- Privacy Policy template (copy-paste ready)
+- Affiliate Disclosure template (FTC compliant, copy-paste ready)
+- sitemap.xml code snippet (Express.js)
+- robots.txt template
+- Full HTML meta tags template
+- JSON-LD structured data template
+
+---
+
+## 8. POST-DEPLOYMENT CHECKLIST
+- All legal pages load, contact form works, footer on every page
+- sitemap.xml valid, robots.txt correct, meta tags render
+- Structured data validates, OG preview works, SSL active
+- No broken links, mobile responsive, under 3s load
+- Submit sitemap to Google Search Console
+- Apply to affiliate networks, set up Google Analytics
+
+---
+
+Document by: GarageBot Agent | DarkWave Studios, LLC | February 2026

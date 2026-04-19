@@ -1,0 +1,21 @@
+{
+  "id": "tl-driver-connect-demo",
+  "name": "TL Driver Connect — Demo Tenant",
+  "short_name": "TL Demo",
+  "description": "White-label franchise platform demo — see what your franchise looks like",
+  "start_url": "/demo",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/tl-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
