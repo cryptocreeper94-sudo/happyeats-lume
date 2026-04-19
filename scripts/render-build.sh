@@ -4,7 +4,7 @@
 set -e
 
 echo "Installing dependencies..."
-npm ci
+npm ci --include=dev
 
 echo "Compiling .lume files..."
 npm run compile
