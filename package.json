@@ -9,8 +9,8 @@
     "build": "npm run compile && npm run build:client",
     "build:client": "node ./node_modules/vite/bin/vite.js build",
     "start": "node server/index.js",
-    "render:build": "bash scripts/render-build.sh",
-    "render:start": "bash scripts/render-start.sh"
+    "render:build": "npm ci --include=dev && npm run compile && npm run build:client",
+    "render:start": "node server/index.js"
   },
   "engines": {
     "node": ">=18.0.0"
