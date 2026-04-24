@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Footer, EcosystemCarousel } from "@/components/layout/footer";
+import { Footer } from "@/components/layout/footer";
 import { ComingSoonBanner } from "@/components/coming-soon-banner";
 
 import flyoverFoodTrucks from "@/assets/videos/flyover-food-trucks.mp4";
@@ -633,10 +633,6 @@ export default function ExploreHub() {
               <CategorySection key={category.title} category={category} index={index} />
             ))
           )}
-        </div>
-
-        <div className="px-4 mb-6">
-          <EcosystemCarousel />
         </div>
 
         <Footer />
