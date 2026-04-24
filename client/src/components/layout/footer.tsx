@@ -1,388 +1,112 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useCallback } from "react";
 import { Link } from "wouter";
-import {
-  Shield, MapPin,
-  ChevronRight, ChevronLeft, Truck, ShoppingCart,
-  Globe, Heart, Zap
-} from "lucide-react";
-import { useLanguage } from "@/i18n/context";
-
-import ecoTLDC from "@/assets/images/eco/tl-driver-connect.png";
-import ecoHE from "@/assets/images/eco/happy-eats.png";
-import ecoGB from "@/assets/images/eco/garagebot.png";
-import ecoDW from "@/assets/images/eco/darkwave-studios.png";
-import ecoTS from "@/assets/images/eco/trustshield.png";
-import ecoTLID from "@/assets/images/eco/tlid.png";
-import ecoTV from "@/assets/images/eco/trustvault.png";
-import ecoTL from "@/assets/images/eco/trustlayer.png";
-import ecoSignal from "@/assets/images/eco/signal.png";
-import ecoOS from "@/assets/images/eco/orbit-staffing.png";
-
-const platformLinks = [
-  { label: "Order Food", href: "/order/i24-corridor", icon: ShoppingCart },
-  { label: "Browse Vendors", href: "/vendors", icon: Truck },
-  { label: "Kitchen Menu", href: "/kitchen", icon: ShoppingCart },
-  { label: "Track Order", href: "/tracking", icon: MapPin },
-  { label: "Zone Map", href: "/zones", icon: MapPin },
-  { label: "Affiliate Program", href: "/affiliate", icon: Heart },
-];
-
-const driverLinks = [
-  { label: "Trucker Talk", href: "/trucker-talk" },
-  { label: "Weather & Roads", href: "/weather" },
-  { label: "GPS Finder", href: "/gps" },
-  { label: "CDL Directory", href: "/cdl-directory" },
-  { label: "Mileage Tracker", href: "/business" },
-  { label: "Concierge", href: "/concierge" },
-];
-
-const companyLinks = [
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Investor Info", href: "/investors" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Support", href: "/support" },
-  { label: "Team", href: "/team" },
-  { label: "Trust Layer", href: "/ecosystem" },
-  { label: "Report a Bug", href: "/contact" },
-];
-
-const legalLinks = [
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
-];
-
-const ecosystemBrands = [
-  { name: "TL Driver Connect", tagline: "Driver Services Platform", url: "https://tldriverconnect.com", image: ecoTLDC, color: "from-cyan-400 to-blue-500" },
-  { name: "Happy Eats", tagline: "Food Ordering & Delivery", url: "https://happyeats.app", image: ecoHE, color: "from-orange-400 to-amber-500" },
-  { name: "GarageBot", tagline: "AI Vehicle Maintenance", url: "https://garagebot.io", image: ecoGB, color: "from-emerald-400 to-green-500" },
-  { name: "DarkWave Studios", tagline: "Creative Technology", url: "https://dwtl.io", image: ecoDW, color: "from-violet-400 to-purple-500" },
-  { name: "TrustShield", tagline: "Security & Protection", url: "https://trustshield.tech", image: ecoTS, color: "from-cyan-400 to-teal-500" },
-  { name: "SignalCast", tagline: "Social Media Automation", url: "https://signalcast.tlid.io", image: ecoTLID, color: "from-blue-400 to-indigo-500" },
-  { name: "TrustVault", tagline: "Media Studio & Editor", url: "/media-editor", image: ecoTV, color: "from-amber-400 to-orange-500" },
-  { name: "Trust Layer", tagline: "Layer 1 Blockchain & Ecosystem Hub", url: "/ecosystem", image: ecoTL, color: "from-cyan-400 to-amber-500" },
-  { name: "Signal", tagline: "Native Ecosystem Asset — Signal Charging", url: "https://dwtl.io/signal", image: ecoSignal, color: "from-amber-400 to-cyan-500" },
-  { name: "OrbitStaffing", tagline: "Payroll, HR & Staffing Solutions", url: "https://orbitstaffing.io", image: ecoOS, color: "from-teal-400 to-blue-500" },
-];
 
 const socialLinks = [
-  { name: "Facebook", icon: "f", url: "https://facebook.com/tldriverconnect", bg: "from-blue-600 to-blue-700" },
-  { name: "Instagram", icon: "ig", url: "https://instagram.com/tldriverconnect", bg: "from-pink-500 via-purple-500 to-orange-400" },
-  { name: "X", icon: "X", url: "https://x.com/tldriverconnect", bg: "from-gray-700 to-gray-800" },
-  { name: "TikTok", icon: "tk", url: "https://tiktok.com/@tldriverconnect", bg: "from-gray-900 to-gray-800" },
+  { name: "Twitter", url: "https://x.com/TrustSignal26", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" },
+  { name: "Discord", url: "https://discord.gg/PtkWpzE6", d: "M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" },
+  { name: "Telegram", url: "https://t.me/dwsccommunity", d: "M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" },
+  { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61585553137979", d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" },
 ];
 
-export function EcosystemCarousel() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+export function Footer() {
+  const clickCountRef = useRef(0);
+  const clickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const getCards = () => {
-    const el = scrollRef.current;
-    if (!el) return [];
-    return Array.from(el.children) as HTMLElement[];
-  };
-
-  const checkScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cards = getCards();
-    if (!cards.length) return;
-    const containerCenter = el.scrollLeft + el.clientWidth / 2;
-    let closestIdx = 0;
-    let closestDist = Infinity;
-    cards.forEach((card, i) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(containerCenter - cardCenter);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIdx = i;
-      }
-    });
-    setActiveIndex(closestIdx);
-  };
-
-  useEffect(() => {
-    checkScroll();
-    const el = scrollRef.current;
-    if (el) el.addEventListener("scroll", checkScroll, { passive: true });
-    return () => { if (el) el.removeEventListener("scroll", checkScroll); };
+  const handleShieldClick = useCallback(() => {
+    clickCountRef.current += 1;
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    if (clickCountRef.current >= 3) {
+      clickCountRef.current = 0;
+      window.open("https://dwtl.io/developer-portal", "_blank");
+    } else {
+      clickTimerRef.current = setTimeout(() => {
+        clickCountRef.current = 0;
+      }, 2000);
+    }
   }, []);
 
-  const scrollTo = (idx: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cards = getCards();
-    if (!cards[idx]) return;
-    const card = cards[idx];
-    const scrollPos = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2;
-    el.scrollTo({ left: scrollPos, behavior: "smooth" });
-  };
-
-  const scroll = (dir: "left" | "right") => {
-    const next = dir === "left" ? Math.max(0, activeIndex - 1) : Math.min(ecosystemBrands.length - 1, activeIndex + 1);
-    scrollTo(next);
-  };
-
   return (
-    <div className="relative mb-8">
-      <h4 className="text-[11px] font-bold text-white/50 uppercase tracking-[0.2em] mb-4 text-center flex items-center justify-center gap-2">
-        <Zap className="size-3 text-amber-400" />
-        Ecosystem
-        <Zap className="size-3 text-amber-400" />
-      </h4>
-
-      <div className="relative overflow-hidden">
-        <div
-          ref={scrollRef}
-          className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none", paddingLeft: "11%", paddingRight: "11%" }}
-        >
-          {ecosystemBrands.map((brand, i) => {
-            const isExternal = brand.url.startsWith("http");
-            const isActive = i === activeIndex;
-            const cardContent = (
-              <div
-                className={`relative h-[130px] rounded-2xl overflow-hidden border transition-all duration-400 cursor-pointer group snap-center ${
-                  isActive
-                    ? "border-cyan-500/30 shadow-lg shadow-cyan-500/10 scale-100"
-                    : "border-white/[0.06] opacity-60 scale-95"
-                }`}
-                style={{ width: "78vw", minWidth: "78vw", maxWidth: "400px" }}
-                data-testid={`footer-eco-${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                <img src={brand.image} alt="" className="absolute inset-0 w-full h-full object-cover brightness-90 group-hover:brightness-110 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
-                <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-[0.08] group-hover:opacity-[0.18] transition-opacity duration-300`} />
-                <div className="relative h-full flex flex-col justify-end p-4">
-                  <p className="text-sm font-bold text-white drop-shadow-lg leading-tight">{brand.name}</p>
-                  <p className="text-[11px] text-white/50 mt-1 leading-tight">{brand.tagline}</p>
-                </div>
-              </div>
-            );
-
-            return isExternal ? (
-              <a key={brand.name} href={brand.url} target="_blank" rel="noopener noreferrer" className="shrink-0">
-                {cardContent}
-              </a>
-            ) : (
-              <Link key={brand.name} href={brand.url} className="shrink-0">
-                {cardContent}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center gap-3 mt-4">
-        <button
-          onClick={() => scroll("left")}
-          disabled={activeIndex === 0}
-          className="size-7 rounded-full bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500/30 disabled:opacity-20 disabled:cursor-default transition-all"
-          aria-label="Previous"
-          data-testid="eco-carousel-prev"
-        >
-          <ChevronLeft className="size-3.5" />
-        </button>
-
-        <div className="flex items-center gap-1.5">
-          {ecosystemBrands.map((brand, i) => (
-            <button
-              key={brand.name}
-              onClick={() => scrollTo(i)}
-              aria-label={brand.name}
-              style={{
-                width: i === activeIndex ? 20 : 8,
-                height: 8,
-                minHeight: 8,
-                maxHeight: 8,
-                borderRadius: 9999,
-                padding: 0,
-                border: "none",
-                background: i === activeIndex ? "#22d3ee" : "rgba(255,255,255,0.2)",
-                boxShadow: i === activeIndex ? "0 4px 6px rgba(34,211,238,0.4)" : "none",
-                transition: "all 0.3s",
-                cursor: "pointer",
-              }}
-              data-testid={`eco-dot-${i}`}
-            />
-          ))}
-        </div>
-
-        <button
-          onClick={() => scroll("right")}
-          disabled={activeIndex === ecosystemBrands.length - 1}
-          className="size-7 rounded-full bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500/30 disabled:opacity-20 disabled:cursor-default transition-all"
-          aria-label="Next"
-          data-testid="eco-carousel-next"
-        >
-          <ChevronRight className="size-3.5" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export function Footer() {
-  const { t } = useLanguage();
-  const dwscClickRef = useRef({ count: 0, timer: null as any });
-  const handleDWSCClick = () => {
-    dwscClickRef.current.count++;
-    if (dwscClickRef.current.count === 3) {
-      dwscClickRef.current.count = 0;
-      clearTimeout(dwscClickRef.current.timer);
-      window.open('https://dwtl.io/#portal', '_blank');
-    } else {
-      clearTimeout(dwscClickRef.current.timer);
-      dwscClickRef.current.timer = setTimeout(() => { dwscClickRef.current.count = 0; }, 800);
-    }
-  };
-  return (
-    <>
-      <footer className="relative mt-auto pb-2 md:pb-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070b16] via-[#0a0f1e] to-[#050810]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,80,255,0.08),transparent)]" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-
-        <div className="relative">
-          <div className="h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
-          <div className="h-[2px] bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
-
-          <div className="container mx-auto max-w-7xl px-4 pt-10 pb-6">
-            <div className="flex flex-col items-center mb-8">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="size-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                  <Truck className="size-5 text-white" />
-                </div>
-                <div>
-                  <a href="https://tldriverconnect.com" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-white tracking-wide hover:text-cyan-300 transition-colors">
-                    TL Driver Connect
-                  </a>
-                  <p className="text-[10px] text-white/40">by DarkWave Studios</p>
-                </div>
-              </div>
-              <p className="text-xs text-white/50 leading-relaxed text-center max-w-sm mb-4">
-                <a href="https://tldriverconnect.com" target="_blank" rel="noopener noreferrer" className="text-cyan-400/70 hover:text-cyan-300 transition-colors">TL Driver Connect</a> is a nationwide driver services app — white-label ready and built for the road. Happy Eats is our first tenant, powering food delivery across Middle Tennessee.
-              </p>
-              <div className="flex flex-wrap justify-center gap-2">
+    <footer className="relative z-10 border-t border-white/10 bg-[#070b16]" data-testid="footer">
+      {/* Site Links */}
+      <div className="border-b border-white/5">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+            <div>
+              <h4 className="font-bold text-white/90 mb-4 text-xs uppercase tracking-wider">Platform</h4>
+              <ul className="space-y-2 text-xs text-white/40">
+                <li><Link href="/menu" className="hover:text-cyan-400 transition-colors">Menu</Link></li>
+                <li><Link href="/restaurants" className="hover:text-cyan-400 transition-colors">Restaurants</Link></li>
+                <li><Link href="/orders" className="hover:text-cyan-400 transition-colors">Orders</Link></li>
+                <li><Link href="/rewards" className="hover:text-cyan-400 transition-colors">Rewards</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white/90 mb-4 text-xs uppercase tracking-wider">Ecosystem</h4>
+              <ul className="space-y-2 text-xs text-white/40">
+                <li><a href="https://dwtl.io" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Trust Layer</a></li>
+                <li><a href="https://dwtl.io/presale" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Signal Presale</a></li>
+                <li><a href="https://darkwavestudios.io" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">DarkWave Studios</a></li>
+                <li><a href="https://brewandboard.app" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Brew & Board</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white/90 mb-4 text-xs uppercase tracking-wider">Resources</h4>
+              <ul className="space-y-2 text-xs text-white/40">
+                <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About</Link></li>
+                <li><Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link></li>
+                <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms</Link></li>
+                <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-white/90 mb-4 text-xs uppercase tracking-wider">Community</h4>
+              <div className="flex gap-3 justify-center md:justify-start mb-3">
                 {socialLinks.map((s) => (
-                  <a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`size-8 rounded-lg bg-gradient-to-br ${s.bg} flex items-center justify-center text-white text-[10px] font-bold hover:scale-110 hover:shadow-lg transition-all duration-200 border border-white/10`}
-                    title={s.name}
-                    data-testid={`footer-social-${s.name.toLowerCase()}`}
-                  >
-                    {s.icon}
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-cyan-400 transition-all duration-300 hover:scale-110" title={s.name}>
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d={s.d} /></svg>
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 mb-6">
-              <div>
-                <h4 className="text-[11px] font-bold text-white/70 uppercase tracking-[0.2em] mb-4">
-                  Platform
-                </h4>
-                <ul className="space-y-2.5">
-                  {platformLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-xs text-white/40 hover:text-orange-300 transition-colors duration-200"
-                        data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-[11px] font-bold text-white/70 uppercase tracking-[0.2em] mb-4">
-                  Driver Tools
-                </h4>
-                <ul className="space-y-2.5">
-                  {driverLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-xs text-white/40 hover:text-cyan-300 transition-colors duration-200"
-                        data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h4 className="text-[11px] font-bold text-white/70 uppercase tracking-[0.2em] mb-3 text-center">
-                Company
-              </h4>
-              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-                {companyLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="text-sm text-white/40 hover:text-violet-300 transition-colors duration-200"
-                    data-testid={`footer-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-5" />
-
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mb-4">
-              {legalLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-xs text-white/30 hover:text-white/50 transition-colors"
-                  data-testid={`footer-legal-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex flex-col items-center gap-2.5">
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <span>© 2026 DarkWave Studios, LLC</span>
-                <span className="text-white/15">•</span>
-                <span>All rights reserved</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-xs text-white/25">
-                <Shield className="size-3.5 text-cyan-500/40" />
-                <span>Secured by</span>
-                <a href="https://trustshield.tech" target="_blank" rel="noopener noreferrer" className="text-cyan-400/50 hover:text-cyan-400 transition-colors">
-                  TrustShield
-                </a>
-                <span className="text-white/15">|</span>
-                <span>Powered by</span>
-                <a href="https://dwtl.io" target="_blank" rel="noopener noreferrer" className="text-violet-400/50 hover:text-violet-400 transition-colors">
-                  DarkWave
-                </a>
-              </div>
-              <div className="flex items-center gap-1.5 text-sm text-white/25 mt-1">
-                <span>Built with</span>
-                <Heart className="size-3.5 text-rose-500/50 fill-rose-500/50" />
-                <span>for drivers everywhere</span>
-                <span className="text-white/10 ml-1">|</span>
-                <span onClick={handleDWSCClick} className="cursor-default select-none text-white/20 hover:text-cyan-400/40 transition-colors" title="◈ DWSC">◈</span>
-              </div>
+              <p className="text-xs text-white/30">Join our growing community</p>
             </div>
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+
+      {/* Powered by Lume (Lume-V wrapped) */}
+      <div className="border-b border-white/5 bg-gradient-to-r from-cyan-950/20 via-transparent to-teal-950/20">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-center gap-3 text-xs text-white/60">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
+          </span>
+          <span>
+            Wrapped in{" "}
+            <a href="https://lume-lang.com" target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">Lume-V</a>
+            {" "}— deterministic verification layer
+          </span>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="max-w-5xl mx-auto px-4 py-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-white/40">
+          <span className="text-white/60">DarkWave Studios, LLC</span>
+          <span className="text-white/20">•</span>
+          <span>&copy; 2026</span>
+          <span className="text-white/20">•</span>
+          <a href="https://dwtl.io" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Trust Layer</a>
+          <span className="text-white/20">•</span>
+          <button
+            onClick={handleShieldClick}
+            className="text-white/10 hover:text-white/20 transition-colors"
+            data-testid="shield-easter-egg"
+            aria-label="Shield"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </button>
+        </div>
+      </div>
+    </footer>
   );
 }
